@@ -1,12 +1,12 @@
 // from data.js
-var tableData = data;
+const tableData = data;
 
 var tbody = d3.select("tbody");
 
 tableData.forEach((ufoReport) => {
-  var row = tbody.append("tr");
+  let row = tbody.append("tr");
   Object.entries(ufoReport).forEach(([key, value]) => {
-    var cell = row.append("td");
+    let cell = row.append("td");
     cell.text(value);
   });
 });
@@ -62,9 +62,9 @@ function runEnter() {
   d3.select("tbody").html("");
 
   filteredData.forEach((ufoReport) => {
-    var row = tbody.append("tr");
+    let row = tbody.append("tr");
     Object.entries(ufoReport).forEach(([key, value]) => {
-      var cell = row.append("td");
+      let cell = row.append("td");
       cell.text(value);
     });
   });
