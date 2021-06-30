@@ -37,20 +37,25 @@ function runEnter() {
   d3.event.preventDefault();
 
   // Select the input element and get the raw HTML node
-  var inputDate = d3.select("#datetime");
+  var inputStartDate = d3.select("#datetime__start");
+  var inputEndDate = d3.select("#datetime__end");
   var inputCity = d3.select('#city');
 
   // Get the value property of the input element
-  var inputDateValue = inputDate.property("value");
+  var inputStartDateValue = inputStartDate.property("value");
+  var inputEndDateValue = inputEndDate.property("value");
   var inputCityValue = inputCity.property("value").toLowerCase();
 
   // d3.selectAll('p').text('');
 
   var filteredData = tableData
-  if (inputDateValue) {
-    filteredData = filteredData.filter(event => event.datetime === inputDateValue);
+  if (inputStartDateValue) {
+    filteredData = filteredData.filter(event => Date.parse(event.datetime) >= Date.parse(inputStartDateValue));
   }
-  else if (inputCityValue) {
+  if (inputEndDateValue) {
+    filteredData = filteredData.filter(event => Date.parse(event.datetime) <= Date.parse(inputEndDateValue));
+  }
+  if (inputCityValue) {
     filteredData = filteredData.filter(event => event.city === inputCityValue)
   }
 
